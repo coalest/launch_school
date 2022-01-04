@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+      <div id="main">
+        <div class="header">
+          <h2>Users and Interests</h2>
+        </div>
+
+        <div class="content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  <footer style="position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;">
+    <p>There are <%= @num_users %> users with a total of <%= @num_interests %> interests.</p>
+  </footer>
+</html>

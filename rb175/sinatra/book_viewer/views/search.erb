@@ -1,0 +1,32 @@
+<h2 class="content-subhead">Search</h2>
+
+<form action="/search" method="get">
+  <input name="query" value="<%= params[:query] %>"/>
+  <button type="submit">Search</button>
+</form>
+
+<% if params[:query] %>
+  <% if @results.empty? %>
+    <p>Sorry, no matches were found.</p>
+  <% else %>
+    <h2 class="content-subhead">Results for '<%= params[:query]%>'</h2>
+
+    <ul>
+      <% @results.each do |result| %>
+        <li><a href="/chapters/<%= result[:number] %>"><%= result[:name] %></a></li>
+
+        <% File.read("data/chp#{result[:number]}.txt").split("\n\n").each_with_index do |paragraph, i| %>
+          <ul>
+          <% if paragraph.match?(params[:query]) %>
+            <li>
+              <a href="chapters/<%= result[:number].to_s + "##{i}" %>">
+                <%= emphasize(paragraph, params[:query]) %>
+              </a>
+            </li>
+          <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

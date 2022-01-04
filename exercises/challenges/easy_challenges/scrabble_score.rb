@@ -1,0 +1,33 @@
+require 'pry'
+class Scrabble
+  VALUES = {%w(A E I O U L N R S T)=> 1,
+            %w(D G)=> 2,
+            %w(B C M P)=> 3,
+            %w(F H V W Y)=> 4,
+            %w(K)=> 5,
+            %w(J X)=> 8,
+            %w(Q Z)=> 10
+           }
+  
+  def initialize(word)
+    @word = word ? word : ''
+  end
+
+  def score
+    letters = @word.upcase.gsub(/[^A-Z]/, '').chars
+
+    letters.reduce(0) do |score, letter|
+      value = 0
+      VALUES.each do |k, v|
+        value = v if k.include?(letter.upcase)
+      end
+      score + value
+    end
+  end
+
+  def self.score(word)
+    Scrabble.new(word).score
+  end
+end
+
+puts Scrabble.new('a').score

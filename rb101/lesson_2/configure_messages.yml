@@ -1,0 +1,10 @@
+en:
+  welcome: "Welcome to my first calculator app. Enter your name:"
+  name_error: "Make sure to use a valid name"
+
+es:
+  welcome: "Bienvenido a la calculadora! Entre su nombre:"
+  name_error: "Asegúrese de entrar un nombre válido."
+
+welcome_name: "Hello! Hope you enjoy this calculator!"
+

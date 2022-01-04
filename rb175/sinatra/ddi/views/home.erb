@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <title>Dynamic Directory Index</title>
+  </head>
+
+  <body>
+    <div id="main">
+    <div class="header">
+      <h1>Dynamic Directory Index</h1>
+      <h2>by Cory</h2>
+    </div>
+
+    <div class="content">
+      <% for @item in @listing -%>
+        <% @item = @item.gsub("public/",'') %>
+        <p><a href="<%= @item %>"><%= @item %></a></p>
+      <% end -%>
+
+      <p><a href="/">Sort ascending</a></p>
+      <p><a href="/reversed">Sort descending</a></p>
+    </div>
+  </body>
+</html>

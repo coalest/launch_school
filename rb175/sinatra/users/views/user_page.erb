@@ -1,0 +1,13 @@
+<div class="content">
+
+<h3><%= @user.capitalize %></h3>
+<p>Email address: <%= @users[@user][:email] %></p> 
+<p>Interests: <%= @users[@user][:interests].join(", ") %></p>
+
+<br>
+
+<p>Other users: 
+  <% @users.keys.map do |user| %>
+    <% next if user == @user %>
+    <a href="/<%= user %>"><%= user %></a>
+  <% end %>
